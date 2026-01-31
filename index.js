@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-const API_KEY = "SUA_API_KEY_PIXGO_AQUI";
+const API_KEY = process.env.PIXGO_API_KEY;
 
 app.post("/criar-pix", async (req, res) => {
   const { valor } = req.body;
