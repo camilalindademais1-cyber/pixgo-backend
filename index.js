@@ -4,6 +4,10 @@ const app = express();
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("PixGo Backend ONLINE ✅");
+});
+
 const API_KEY = process.env.PIXGO_API_KEY;
 
 app.post("/criar-pix", async (req, res) => {
