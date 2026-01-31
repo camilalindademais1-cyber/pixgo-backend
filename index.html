@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Depósito PIX</title>
+</head>
+<body>
+
+<h2>Depósito PIX</h2>
+
+<button onclick="criarPix(10)">Depositar R$10</button>
+<button onclick="criarPix(20)">Depositar R$20</button>
+<button onclick="criarPix(30)">Depositar R$30</button>
+
+<pre id="res"></pre>
+
+<script>
+function criarPix(valor) {
+  fetch("https://pixgo-backend.onrender.com/criar-pix", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ valor })
+  })
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("res").innerText =
+      JSON.stringify(data, null, 2);
+  })
+  .catch(err => {
+    document.getElementById("res").innerText =
+      "Erro: " + err.message;
+  });
+}
+</script>
+
+</body>
+</html>
