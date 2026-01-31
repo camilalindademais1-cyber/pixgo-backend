@@ -6,6 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Backend PIX ONLINE 🚀");
+});
+
 app.post("/criar-pix", (req, res) => {
   const { valor } = req.body;
 
